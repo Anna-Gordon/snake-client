@@ -13,6 +13,14 @@ const connect = function() {
     conn.write('Name: AnG');
   });
   
+  setInterval( () => {
+    conn.write('\r Say: GO!');
+  }, 5000)
+
+  setTimeout( () => {
+    conn.write('\r Say: YEE!');
+  }, 8000)
+  
   
   conn.on('data', (data) => {
     console.log('Server says: ', data);
