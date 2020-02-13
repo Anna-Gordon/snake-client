@@ -1,17 +1,19 @@
 const { connect } = require('./client');
-let connection = connect();
 
-const handleUserInput = (data) => {
-  if ( data === 'i') {
+let connection; 
+
+
+const handleUserInput = function(data) {
+  if ( data === 'w') {
     connection.write('Move: up'); 
   }
-  if ( data === 'j') {
+  if ( data === 'a') {
     connection.write('Move: left'); 
   }
-  if ( data === 'l') {
+  if ( data === 'd') {
     connection.write('Move: right'); 
   }
-  if ( data === 'k') {
+  if ( data === 's') {
     connection.write('Move: down'); 
   }
 
@@ -23,7 +25,11 @@ const handleUserInput = (data) => {
   connection.write(data);
 }
 
-const setupInput = function() {
+
+
+
+const setupInput = function(conn) {
+  connection = conn;
   const stdin = process.stdin;
   stdin.setRawMode(true);
   stdin.setEncoding('utf8');
@@ -33,6 +39,6 @@ const setupInput = function() {
   return stdin;
 }
 
-setupInput();
+setupInput(connection);
 
 module.exports = { setupInput };
